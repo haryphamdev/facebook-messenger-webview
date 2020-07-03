@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Set hotel references</title>
+</head>
+<script>
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'Messenger'));
+
+    window.extAsyncInit = function() {
+        // the Messenger Extensions JS SDK is done loading
+        MessengerExtensions.getContext('193225915439007',
+            function success(thread_context){
+                // success
+                document.getElementById("psid").value= thread_context.psid ;
+
+            },
+            function error(err){
+                // error
+                console.log(err);
+            }
+        );
+    };
+
+    function handleSaveBtn() {
+        //close the webview
+        MessengerExtensions.requestCloseBrowser(function success() {
+            // webview closed
+        }, function error(err) {
+            // an error occurred
+            console.log(err);
+        });
+    }
+
+</script>
+<body>
+<form method="POST" action="/set-up-webview">
+    <input type="text" hidden name="psid" id="psid">
+    <h3>Pillows</h3>
+    <input type="radio" id="hardPillow" value="hard" name="pillow" checked>
+    <label for="hardPillow">Hard</label>
+    <input type="radio" id="softPillow" value="soft" name="pillow">
+    <label for="softPillow">Soft</label>
+
+    <h3>Bed</h3>
+    <input type="radio" id="singleBed" value="single" name="bed" checked>
+    <label for="singleBed">Single</label>
+    <input type="radio" id="doubleBed" value="double" name="bed">
+    <label for="doubleBed">Double</label>
+    <input type="radio" value="twin" id="twinBed" name="bed">
+    <label for="twinBed">Twin</label>
+
+    <h3>View</h3>
+    <input type="radio" id="seaView" value="sea" name="view" checked>
+    <label for="seaView">Sea</label>
+    <input type="radio" id="streetView" value="street" name="view">
+    <label for="streetView">Street</label>
+
+    <div>
+        <br>
+        <button type="submit" onclick="handleSaveBtn()">SAVE</button>
+    </div>
+
+</form>
+</body>
+</html>
