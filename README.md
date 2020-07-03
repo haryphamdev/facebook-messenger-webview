@@ -5,6 +5,10 @@ Facebook Messenger Advance topic: Webview - The Messenger Platform allows you to
 
 ### Watch the video to build this project from scratch : 
 
+### Another bots:
+1. Tech shop bot: https://youtu.be/4zkR4nzmqA4
+2. Restaurant bot: https://youtu.be/SIi3fGkfpk8
+
 ### What can this bot do?
 
 1. Handle basic messaage - send messages and an attachment file (just finished the quick start section in the Messenger Platform document).
